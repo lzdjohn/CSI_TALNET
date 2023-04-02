@@ -6,9 +6,6 @@ This code repo implements Actionformer, one of the first Transformer-based model
 In addition, ActionFormer is the backbone for many winning solutions in the Ego4D Moment Queries Challenge 2022. Our submission in particular is ranked 2nd with a record 21.76% average mAP and 42.54% Recall@1x, tIoU=0.5, nearly three times higher than the official baseline. An arXiv version of our tech report can be found at [this link](https://arxiv.org/abs/2211.09074). We invite our audience to try out the code.
 850030的数据，8500算作时间，30算作channel。通过提取特征 TC特征金字塔—> 得到特征；分出两个简单的branch网络，分别是class_head与regression_head。
 视频中的fps参数，在信号中可以对应采样率；但信号数据怎么定义frame呢
-<div align="center">
-  <img src="teaser.jpg" width="600px"/>
-</div>
 
 Specifically, we adopt a minimalist design and develop a Transformer based model for temporal action localization, inspired by the recent success of Transformers in NLP and vision. Our method, illustrated in the figure, adapts local self-attention to model temporal context in untrimmed videos, classifies every moment in an input video, and regresses their corresponding action boundaries. The result is a deep model that is trained using standard classification and regression loss, and can localize moments of actions in a single shot, without using action proposals or pre-defined anchor windows.
 
