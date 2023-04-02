@@ -35,7 +35,8 @@ DEFAULTS = {
     # network architecture
     "model": {
         # type of backbone (convTransformer | conv)
-        "backbone_type": 'convTransformer',
+        # "backbone_type": 'convTransformer',
+        "backbone_type": 'conv',
         # type of FPN (fpn | identity)
         "fpn_type": "identity",
         "backbone_arch": (2, 2, 5),
