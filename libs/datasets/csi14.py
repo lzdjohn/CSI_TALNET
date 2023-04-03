@@ -36,7 +36,7 @@ class CSIDataset(Dataset):
         file_ext,        # feature file extension if any
         force_upsampling # force to upsample to max_seq_len
     ):
-        self.fft = False
+        self.fft = True
         # file path
         # print(feat_folder, json_file)
         assert os.path.exists(feat_folder) and os.path.exists(json_file)
@@ -163,8 +163,7 @@ class CSIDataset(Dataset):
         # deal with downsampling (= increased feat stride)
         feats = feats[::self.downsample_rate, :]
         feat_stride = self.feat_stride * self.downsample_rate
-        # feat_offset = 0.5 * self.num_frames / feat_stride
-        feat_offset = 0
+        feat_offset = 0.5 * self.num_frames / feat_stride
         if self.fft is True:
             feats = fft_process(feats)
         # T x C -> C x T
@@ -174,8 +173,6 @@ class CSIDataset(Dataset):
         # ok to have small negative values here
         if video_item['segments'] is not None:
             # print(feat_offset)
-            # print(111, video_item['segments'])
-            # print( video_item['fps'], feat_stride)
             segments = torch.from_numpy(
                 video_item['segments'] * video_item['fps'] / feat_stride - feat_offset
             )
@@ -193,11 +190,13 @@ class CSIDataset(Dataset):
                      'duration'        : video_item['duration'],
                      'feat_stride'     : feat_stride,
                      'feat_num_frames' : self.num_frames}
-
         # truncate the features during training
         if self.is_training and (segments is not None):
             data_dict = truncate_feats(
                 data_dict, self.max_seq_len, self.trunc_thresh, feat_offset, self.crop_ratio
             )
-
+        a,b = data_dict['feats'].shape
+        tmp = torch.zeros(a, b)
+        print("dataset",data_dict['feats'])
+        print("is equal",torch.equal(tmp, data_dict['feats']))
         return data_dict

@@ -9,11 +9,13 @@ dataset: {
   num_classes: 7,
   input_dim: 30,
   feat_stride: 16,
-  num_frames: 16,
+  num_frames: 2000,
   # serve as data augmentation
   trunc_thresh: 0.5,
   crop_ratio: [0.9, 1.0],
   max_seq_len: 2304,
+  # max_seq_len: 4608,
+  # max_seq_len: 9216,
   # serve as data augmentation
 }
 model: {
@@ -31,7 +33,7 @@ opt: {
   weight_decay: 0.05,
 }
 loader: {
-  batch_size: 4,
+  batch_size: 2,
 }
 train_cfg: {
   init_loss_norm: 100,

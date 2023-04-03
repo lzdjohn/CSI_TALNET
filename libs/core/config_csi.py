@@ -5,7 +5,8 @@ DEFAULTS = {
     "init_rand_seed": 1234567891,
     # dataset loader, specify the dataset here
     "dataset_name": "csi",
-    "devices": ['cuda:1'], # default: single gpu
+    "devices": ['cuda:3'], # default: single gpu
+    # "devices": ['cuda'], # default: single gpu
     "train_split": ('training', ),
     "val_split": ('validation', ),
     "model_name": "LocPointTransformer",
@@ -35,8 +36,7 @@ DEFAULTS = {
     # network architecture
     "model": {
         # type of backbone (convTransformer | conv)
-        # "backbone_type": 'convTransformer',
-        "backbone_type": 'conv',
+        "backbone_type": 'convTransformer',
         # type of FPN (fpn | identity)
         "fpn_type": "identity",
         "backbone_arch": (2, 2, 5),

@@ -78,6 +78,7 @@ class PtTransformerClsHead(nn.Module):
         # apply the classifier for each pyramid level
         out_logits = tuple()
         for _, (cur_feat, cur_mask) in enumerate(zip(fpn_feats, fpn_masks)):
+            # print(cur_feat.shape)
             cur_out = cur_feat
             for idx in range(len(self.head)):
                 cur_out, _ = self.head[idx](cur_out, cur_mask)
@@ -203,8 +204,6 @@ class PtTransformer(nn.Module):
         # #classes = num_classes + 1 (background) with last category as background
         # e.g., num_classes = 10 -> 0, 1, ..., 9 as actions, 10 as background
         self.num_classes = num_classes
-# git config --global  --unset https.https://github.com.proxy 
-# git config --global  --unset http.https://github.com.proxy 
 
         # check the feature pyramid and local attention window size
         self.max_seq_len = max_seq_len
@@ -396,13 +395,12 @@ class PtTransformer(nn.Module):
             Generate batched features and masks from a list of dict items
         """
         #feats里两个feat max_len取feat里的最大值
+        print("processing", video_list[1]['feats'][0])
+
         feats = [x['feats'] for x in video_list]
-        # print(len(feats))
-        # print(feats[0].shape)
-        # print(feats[1].shape)
+        print(len(feats))
         feats_lens = torch.as_tensor([feat.shape[-1] for feat in feats])
         max_len = feats_lens.max(0).values.item()
-        
         if self.training:
             assert max_len <= self.max_seq_len, "Input length must be smaller than max_seq_len during training"
             # set max_len to self.max_seq_len

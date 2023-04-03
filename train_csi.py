@@ -1,46 +1,6 @@
 # python ./train_csi.py ./configs/csi.yaml --output reproduce
 # python ./eval_csi.py ./configs/csi.yaml ./ckpt/csi_reproduce
-# python imports
-# 100epochs
-# |tIoU = 0.30: mAP = 14.09 (%) Recall@1x = 30.18 (%) Recall@5x = 92.41 (%) 
-# |tIoU = 0.40: mAP = 12.86 (%) Recall@1x = 26.98 (%) Recall@5x = 82.90 (%) 
-# |tIoU = 0.50: mAP = 8.38 (%) Recall@1x = 16.47 (%) Recall@5x = 67.70 (%) 
-# |tIoU = 0.60: mAP = 7.12 (%) Recall@1x = 11.99 (%) Recall@5x = 60.89 (%) 
-# |tIoU = 0.70: mAP = 1.66 (%) Recall@1x = 5.18 (%) Recall@5x = 21.98 (%) 
-
-# 35epochs
-# |tIoU = 0.30: mAP = 14.16 (%) Recall@1x = 30.18 (%) Recall@5x = 92.05 (%) 
-# |tIoU = 0.40: mAP = 12.83 (%) Recall@1x = 26.98 (%) Recall@5x = 84.46 (%) 
-# |tIoU = 0.50: mAP = 8.04 (%) Recall@1x = 15.95 (%) Recall@5x = 71.94 (%) 
-# |tIoU = 0.60: mAP = 6.96 (%) Recall@1x = 11.99 (%) Recall@5x = 61.09 (%) 
-# |tIoU = 0.70: mAP = 1.52 (%) Recall@1x = 5.18 (%) Recall@5x = 20.37 (%) 
-
-# stride16->128 buxing
-# |tIoU = 0.30: mAP = 13.17 (%) Recall@1x = 30.02 (%) Recall@5x = 93.16 (%) 
-# |tIoU = 0.40: mAP = 12.30 (%) Recall@1x = 26.56 (%) Recall@5x = 86.43 (%) 
-# |tIoU = 0.50: mAP = 8.30 (%) Recall@1x = 15.54 (%) Recall@5x = 72.64 (%) 
-# |tIoU = 0.60: mAP = 7.39 (%) Recall@1x = 11.99 (%) Recall@5x = 62.64 (%) 
-# |tIoU = 0.70: mAP = 2.31 (%) Recall@1x = 5.18 (%) Recall@5x = 27.02 (%) 
-
-# truncate thresh0.9-0.1
-# |tIoU = 0.30: mAP = 13.21 (%) Recall@1x = 30.02 (%) Recall@5x = 90.15 (%) 
-# |tIoU = 0.40: mAP = 10.85 (%) Recall@1x = 18.59 (%) Recall@5x = 82.11 (%) 
-# |tIoU = 0.50: mAP = 7.61 (%) Recall@1x = 15.54 (%) Recall@5x = 66.82 (%) 
-# |tIoU = 0.60: mAP = 6.90 (%) Recall@1x = 11.99 (%) Recall@5x = 58.65 (%) 
-# |tIoU = 0.70: mAP = 1.48 (%) Recall@1x = 5.18 (%) Recall@5x = 23.38 (%) 
-
-# identity->fpn
-# |tIoU = 0.30: mAP = 13.73 (%) Recall@1x = 30.02 (%) Recall@5x = 94.05 (%) 
-# |tIoU = 0.40: mAP = 12.74 (%) Recall@1x = 26.56 (%) Recall@5x = 89.13 (%) 
-# |tIoU = 0.50: mAP = 8.71 (%) Recall@1x = 15.54 (%) Recall@5x = 76.50 (%) 
-# |tIoU = 0.60: mAP = 7.27 (%) Recall@1x = 11.99 (%) Recall@5x = 61.22 (%) 
-# |tIoU = 0.70: mAP = 2.73 (%) Recall@1x = 5.18 (%) Recall@5x = 32.72 (%) 
-
-#   one n_mha_win_size to -1
-# 13 not good
-
-# next max_seq_len 4608->6912
-
+# hihihihihihiihhiihhiihhihiihihhi
 import argparse
 import os
 import time
