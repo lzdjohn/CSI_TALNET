@@ -9,10 +9,11 @@ dataset: {
   num_classes: 7,
   input_dim: 30,
   feat_stride: 16,
-  num_frames: 2000,
+  num_frames: 0,
   # serve as data augmentation
   trunc_thresh: 0.5,
-  crop_ratio: [0.9, 1.0],
+  # crop_ratio: [0.9, 1.0],
+  crop_ratio: [0.1, 0.6],
   max_seq_len: 2304,
   # max_seq_len: 4608,
   # max_seq_len: 9216,
@@ -21,15 +22,15 @@ dataset: {
 model: {
   input_dim : 30,
   fpn_type: identity,
-  max_buffer_len_factor: 6.0,
+  # max_buffer_len_factor: 6.0,
+  max_buffer_len_factor: 4.0,
   n_mha_win_size: 19, # 本身是19
 }
 # python ./train_csi.py ./configs/csi.yaml --output reproduce
 # python ./train_csi.py ./configs/csi.yaml --output reproduce
 opt: {
-  # learning_rate: 0.0001,
   learning_rate: 0.01,
-  epochs: 30,
+  epochs: 40,
   weight_decay: 0.05,
 }
 loader: {

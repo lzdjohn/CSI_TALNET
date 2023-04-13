@@ -1,4 +1,5 @@
 # python imports
+# python ./train.py ./configs/thumos_i3d.yaml --output reproduce
 import argparse
 import os
 import time

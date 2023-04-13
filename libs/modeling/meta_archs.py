@@ -336,11 +336,12 @@ class PtTransformer(nn.Module):
     def forward(self, video_list):
         # batch the video list into feats (B, C, T) and masks (B, 1, T)
         batched_inputs, batched_masks = self.preprocessing(video_list)
-
+        # print("masks0", batched_masks)
         # forward the network (backbone -> neck -> heads)
         feats, masks = self.backbone(batched_inputs, batched_masks)
+        # print("masks1",masks)
         fpn_feats, fpn_masks = self.neck(feats, masks)
-
+        # print("masks2", fpn_masks)
         # compute the point coordinate along the FPN
         # this is used for computing the GT or decode the final results
         # points: List[T x 4] with length = # fpn levels
@@ -395,10 +396,8 @@ class PtTransformer(nn.Module):
             Generate batched features and masks from a list of dict items
         """
         #feats里两个feat max_len取feat里的最大值
-        print("processing", video_list[1]['feats'][0])
 
         feats = [x['feats'] for x in video_list]
-        print(len(feats))
         feats_lens = torch.as_tensor([feat.shape[-1] for feat in feats])
         max_len = feats_lens.max(0).values.item()
         if self.training:
@@ -425,7 +424,6 @@ class PtTransformer(nn.Module):
 
         # generate the mask 掩码矩阵，用于掩盖掉长度不足的序列
         batched_masks = torch.arange(max_len)[None, :] < feats_lens[:, None] # none增加维度
-
         # push to device
         batched_inputs = batched_inputs.to(self.device)
         batched_masks = batched_masks.unsqueeze(1).to(self.device)

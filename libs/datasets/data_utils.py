@@ -73,22 +73,15 @@ def truncate_feats(
         window = torch.as_tensor([st, ed], dtype=torch.float32)
         # compute the intersection between the sampled window and all segments
         window = window[None].repeat(num_segs, 1)
-        # print("window", window)
         left = torch.maximum(window[:, 0] - offset, data_dict['segments'][:, 0])
-        # print("left",left)
         right = torch.minimum(window[:, 1] + offset, data_dict['segments'][:, 1])
-        # print("r", right)
         inter = (right - left).clamp(min=0)
-        # print("inter", inter)
         area_segs = torch.abs(
             data_dict['segments'][:, 1] - data_dict['segments'][:, 0])
-        # print("area_seg", area_segs)
         inter_ratio = inter / area_segs
-        # print("ration", inter_ratio)
 
         # only select those segments over the thresh
         seg_idx = (inter_ratio >= trunc_thresh)
-        # print("segs",seg_idx)
 
         if no_trunc:
             # with at least one action and not truncating any actions

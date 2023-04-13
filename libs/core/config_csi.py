@@ -5,7 +5,7 @@ DEFAULTS = {
     "init_rand_seed": 1234567891,
     # dataset loader, specify the dataset here
     "dataset_name": "csi",
-    "devices": ['cuda:3'], # default: single gpu
+    "devices": ['cuda:6'], # default: single gpu
     # "devices": ['cuda'], # default: single gpu
     "train_split": ('training', ),
     "val_split": ('validation', ),
@@ -71,7 +71,7 @@ DEFAULTS = {
         # defines the max length of the buffered points
         "max_buffer_len_factor": 6.0,
         # disable abs position encoding (added to input embedding)
-        "use_abs_pe": False,
+        "use_abs_pe": True,
         # use rel position encoding (added to self-attention)
         "use_rel_pe": True,
     },

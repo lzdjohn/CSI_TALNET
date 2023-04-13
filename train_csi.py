@@ -165,15 +165,21 @@ if __name__ == '__main__':
     # the arg parser
     parser = argparse.ArgumentParser(
       description='Train a point-based transformer for action localization')
-    parser.add_argument('config', metavar='DIR',
-                        help='path to a config file')
+    # parser.add_argument('config', metavar='DIR',
+    #                     help='path to a config file')
+    parser.add_argument('-config', metavar='DIR', default="./configs/csi.yaml",
+                    help='path to a config file')
     parser.add_argument('-p', '--print-freq', default=10, type=int,
                         help='print frequency (default: 10 iterations)')
     parser.add_argument('-c', '--ckpt-freq', default=5, type=int,
                         help='checkpoint frequency (default: every 5 epochs)')
-    parser.add_argument('--output', default='', type=str,
-                        help='name of exp folder (default: none)')
+    # parser.add_argument('--output', default='', type=str,
+    #                     help='name of exp folder (default: none)')
+    parser.add_argument('--output', default='reproduce', type=str,
+                    help='name of exp folder (default: none)')
     parser.add_argument('--resume', default='', type=str, metavar='PATH',
                         help='path to a checkpoint (default: none)')
     args = parser.parse_args()
     main(args)
+
+# python ./train_csi.py ./configs/csi.yaml --output reproduce
